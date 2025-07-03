@@ -156,6 +156,15 @@
             font-size: 18px;
             padding: 16px 24px;
         }
+        .redirect-page .fallback-instruction {
+            margin-top: 24px;
+            padding: 15px;
+            background-color: #fffbe6;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #92400e;
+            line-height: 1.5;
+        }
         .redirect-page .back-link {
             display: inline-block;
             margin-top: 20px;
@@ -254,13 +263,17 @@
         <!-- Redirect View: Shown when a group is selected -->
         <div id="redirect-view" class="view">
             <div class="redirect-page">
-                <img src="https://seeklogo.com/images/Z/zalo-logo-B028226926-seeklogo.com.png" alt="Zalo Icon" class="zalo-icon">
-                <h2 id="redirect-title">Đang chuyển đến Zalo...</h2>
-                <p id="redirect-description">Bạn sẽ được chuyển đến nhóm Zalo. Nếu không có gì xảy ra, hãy nhấn nút bên dưới.</p>
-                <a id="redirect-button" href="#" class="action-button">
-                    <i class="fas fa-external-link-alt"></i> Mở Zalo để tham gia ngay!
+                <img src="https://seeklogo.com/images/Z/zalo-logo-B028226926-seeklogo.com.png" alt="Zalo Icon" class="zalo-icon" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f1f5f9/1F2937?text=Zalo';">
+                <h2 id="redirect-title">Sẵn sàng tham gia!</h2>
+                <p id="redirect-description">Nhấn nút bên dưới để mở ứng dụng Zalo.</p>
+                <a id="redirect-button" href="#" class="action-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Mở Zalo và tham gia ngay
                 </a>
-                <a href="/" class="back-link">Quay lại trang chính</a>
+                <div class="fallback-instruction">
+                    <strong>⚠️ Nếu nút không hoạt động:</strong><br>
+                    Hãy nhấn và giữ nút ở trên, chọn "Sao chép địa chỉ liên kết", sau đó mở trình duyệt (Safari, Chrome) và dán vào để vào nhóm.
+                </div>
+                <a href="/" class="back-link">« Quay lại chọn nhóm khác</a>
             </div>
         </div>
 
@@ -299,16 +312,13 @@
                 const redirectButton = document.getElementById('redirect-button');
                 redirectButton.href = group.link;
 
-                mainView.classList.remove('active');
-                redirectView.classList.add('active');
-
-                // Automatically attempt to redirect
-                window.location.href = group.link;
+                mainView.style.display = 'none';
+                redirectView.style.display = 'block';
 
             } else {
                 // Otherwise, show the main view
-                mainView.classList.add('active');
-                redirectView.classList.remove('active');
+                mainView.style.display = 'block';
+                redirectView.style.display = 'none';
             }
         });
     </script>
