@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* --- PADEMY BRAND GUIDELINES --- */
         :root {
@@ -53,7 +55,7 @@
 
         /* --- HEADER & LOGO --- */
         .header {
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .logo {
@@ -74,6 +76,21 @@
             color: var(--pademy-text-light);
             max-width: 500px;
             margin: 0 auto;
+        }
+        
+        /* --- TIKTOK WARNING --- */
+        #tiktok-warning {
+            display: none; /* Hidden by default */
+            background-color: #fffbe6; /* Light yellow */
+            color: #92400e; /* Amber-800 */
+            border: 1px solid #fde68a; /* Yellow-200 */
+            border-radius: 12px;
+            padding: 16px;
+            margin: 24px auto;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: left;
+            max-width: 500px;
         }
 
         /* --- CLASS BLOCKS --- */
@@ -122,6 +139,8 @@
             font-size: 16px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+            cursor: pointer;
+            border: none;
         }
 
         .zalo-button:hover {
@@ -133,6 +152,31 @@
         .footer {
             margin-top: 40px;
             font-size: 12px;
+            color: var(--pademy-text-light);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--pademy-text-dark);
+            flex-wrap: wrap;
+        }
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .contact-info a:hover {
+            color: var(--pademy-blue);
+        }
+        .contact-info .separator {
+            display: inline-block;
             color: var(--pademy-text-light);
         }
 
@@ -150,6 +194,13 @@
             .zalo-button {
                 padding: 12px 20px;
             }
+            .contact-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .contact-info .separator {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -163,6 +214,11 @@
             <h1>Cộng đồng học AI cùng Bùi Đăng Minh Pademy</h1>
             <p class="description">Chọn lớp phù hợp và tham gia nhóm Zalo để nhận thông tin chi tiết và tài liệu miễn phí.</p>
         </header>
+        
+        <!-- TikTok Warning Message -->
+        <div id="tiktok-warning">
+            ⚠️ Bạn đang mở từ TikTok, vui lòng nhấn dấu ba chấm (•••) ở góc trên hoặc dưới màn hình và chọn 'Mở bằng trình duyệt' để có thể tham gia nhóm Zalo.
+        </div>
 
         <!-- List of Classes -->
         <section class="class-list">
@@ -170,29 +226,78 @@
             <div class="class-block">
                 <h2 class="class-name">Cộng đồng Công chức học AI</h2>
                 <p class="class-description">Nhóm dành cho công chức, viên chức muốn ứng dụng AI để nâng cao hiệu suất công việc và chuyên môn.</p>
-                <a href="https://zalo.me/g/lsbbxz292" target="_blank" rel="noopener noreferrer" class="zalo-button">Tham gia nhóm Zalo</a>
+                <a href="https://zalo.me/g/lsbbxz292" onclick="openZaloLink(this.href, event)" class="zalo-button">Tham gia nhóm Zalo</a>
             </div>
 
             <!-- Class Block 2 -->
             <div class="class-block">
                 <h2 class="class-name">Lớp miễn phí AI cho Giáo viên (11–12/7)</h2>
                 <p class="class-description">Khám phá các công cụ AI thiết thực, ứng dụng ngay vào việc soạn giảng, quản lý lớp học và đổi mới phương pháp dạy học.</p>
-                <a href="https://zalo.me/g/yjzaqh600" target="_blank" rel="noopener noreferrer" class="zalo-button">Tham gia nhóm Zalo</a>
+                <a href="https://zalo.me/g/yjzaqh600" onclick="openZaloLink(this.href, event)" class="zalo-button">Tham gia nhóm Zalo</a>
             </div>
 
             <!-- Class Block 3 -->
             <div class="class-block">
                 <h2 class="class-name">Lớp miễn phí AI cho Giảng viên & NCKH (13/7)</h2>
                 <p class="class-description">Ứng dụng AI chuyên sâu để tối ưu hoá quy trình nghiên cứu khoa học, viết báo, và nâng cao chất lượng giảng dạy đại học.</p>
-                <a href="https://zalo.me/g/bxctlp663" target="_blank" rel="noopener noreferrer" class="zalo-button">Tham gia nhóm Zalo</a>
+                <a href="https://zalo.me/g/bxctlp663" onclick="openZaloLink(this.href, event)" class="zalo-button">Tham gia nhóm Zalo</a>
             </div>
         </section>
 
         <!-- Footer Section -->
         <footer class="footer">
+            <div class="contact-info">
+                <a href="tel:0832343416"><i class="fas fa-phone-alt"></i> 0832343416</a>
+                <span class="separator">|</span>
+                <a href="mailto:dangminhbui.111@gmail.com"><i class="fas fa-envelope"></i> dangminhbui.111@gmail.com</a>
+            </div>
             <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
         </footer>
     </main>
 
+    <script>
+        /**
+         * This function attempts to open a Zalo link in a new tab, with a fallback to redirecting the current page.
+         * @param {string} url - The Zalo URL to open.
+         * @param {Event} event - The click event object.
+         */
+        function openZaloLink(url, event) {
+            // Prevent the default link navigation
+            event.preventDefault();
+
+            try {
+                // Try to open in a new tab. This might be blocked by some browsers.
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                if (newWindow) {
+                    newWindow.focus();
+                } else {
+                    // If window.open is blocked (returns null), fall back to redirecting the current page.
+                    window.location.href = url;
+                }
+            } catch (e) {
+                // Catch other potential errors and fall back to redirecting.
+                console.error('Could not open Zalo link in a new window:', e);
+                window.location.href = url;
+            }
+        }
+
+        /**
+         * On page load, check if the user is accessing from the TikTok in-app browser and show a warning if they are.
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // TikTok's user agent on both iOS and Android contains "TikTok"
+            const isTikTok = userAgent.includes("TikTok");
+
+            if (isTikTok) {
+                const warningDiv = document.getElementById('tiktok-warning');
+                if (warningDiv) {
+                    // Make the warning message visible
+                    warningDiv.style.display = 'block';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
