@@ -15,7 +15,6 @@
             --pademy-blue: #0ea5e9;
             --pademy-purple: #a78bfa;
             --pademy-green: #22c55e;
-            --pademy-red: #ef4444;
             --pademy-text-dark: #1F2937;
             --pademy-text-light: #6B7280;
             --pademy-bg-light: #f1f5f9;
@@ -41,7 +40,7 @@
             line-height: 1.6;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center; /* Center vertically */
             padding: 20px;
         }
 
@@ -50,7 +49,14 @@
             width: 100%;
             max-width: 680px;
             text-align: center;
-            padding: 20px 0;
+        }
+
+        /* --- VIEWS --- */
+        .view {
+            display: none; /* Hide all views by default */
+        }
+        .view.active {
+            display: block; /* Show only the active view */
         }
 
         /* --- HEADER & LOGO --- */
@@ -78,26 +84,12 @@
             margin: 0 auto;
         }
         
-        /* --- TIKTOK WARNING --- */
-        #tiktok-warning {
-            display: none; /* Hidden by default */
-            background-color: #fffbe6; /* Light yellow */
-            color: #92400e; /* Amber-800 */
-            border: 1px solid #fde68a; /* Yellow-200 */
-            border-radius: 12px;
-            padding: 16px;
-            margin: 24px auto;
-            font-size: 15px;
-            font-weight: 500;
-            text-align: left;
-            max-width: 500px;
-        }
-
         /* --- CLASS BLOCKS --- */
         .class-list {
             display: flex;
             flex-direction: column;
             gap: 20px;
+            margin-top: 32px;
         }
 
         .class-block {
@@ -105,12 +97,6 @@
             border-radius: 16px;
             padding: 24px;
             box-shadow: 0 4px 15px var(--shadow-color);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-
-        .class-block:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px var(--shadow-color);
         }
 
         .class-name {
@@ -122,12 +108,12 @@
         .class-description {
             font-size: 15px;
             color: var(--pademy-text-light);
-            margin-bottom: 20px;
-            min-height: 45px; /* Ensures consistent height */
+            margin-bottom: 16px;
+            min-height: 45px;
         }
 
-        /* --- ZALO BUTTON --- */
-        .zalo-button {
+        /* --- ACTION BUTTON --- */
+        .action-button {
             display: inline-block;
             width: 100%;
             background: linear-gradient(90deg, var(--pademy-blue), var(--pademy-purple));
@@ -137,15 +123,48 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 16px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.2s ease;
             box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
             cursor: pointer;
             border: none;
         }
-
-        .zalo-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4);
+        
+        /* --- REDIRECT PAGE SPECIFIC STYLES --- */
+        .redirect-page {
+            background-color: var(--pademy-white);
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .redirect-page .zalo-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .redirect-page h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--pademy-text-dark);
+        }
+        .redirect-page p {
+            color: var(--pademy-text-light);
+            margin-bottom: 24px;
+        }
+        .redirect-page .action-button {
+            background: var(--pademy-green);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            font-size: 18px;
+            padding: 16px 24px;
+        }
+        .redirect-page .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--pademy-text-light);
+            text-decoration: none;
+        }
+        .redirect-page .back-link:hover {
+            text-decoration: underline;
         }
 
         /* --- FOOTER --- */
@@ -182,120 +201,114 @@
 
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 24px;
-            }
-            .class-block {
-                padding: 20px;
-            }
-            .zalo-button {
-                padding: 12px 20px;
-            }
-            .contact-info {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .contact-info .separator {
-                display: none;
-            }
+            h1 { font-size: 24px; }
+            .class-block { padding: 20px; }
+            .action-button { padding: 12px 20px; }
+            .contact-info { flex-direction: column; gap: 8px; }
+            .contact-info .separator { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <main class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <img src="https://i.postimg.cc/4d0PH133/LOGO-01.png" alt="Logo Pademy" class="logo"
-                 onerror="this.onerror=null; this.src='https://placehold.co/180x60/f1f5f9/1F2937?text=Pademy';">
-            <h1>Cộng đồng học AI cùng Bùi Đăng Minh Pademy</h1>
-            <p class="description">Chọn lớp phù hợp và tham gia nhóm Zalo để nhận thông tin chi tiết và tài liệu miễn phí.</p>
-        </header>
-        
-        <!-- TikTok Warning Message -->
-        <div id="tiktok-warning">
-            ⚠️ Bạn đang mở từ TikTok, vui lòng nhấn dấu ba chấm (•••) ở góc trên hoặc dưới màn hình và chọn 'Mở bằng trình duyệt' để có thể tham gia nhóm Zalo.
+    <div class="container">
+
+        <!-- Main View: List of all groups -->
+        <div id="main-view" class="view">
+            <header class="header">
+                <img src="https://i.postimg.cc/4d0PH133/LOGO-01.png" alt="Logo Pademy" class="logo" onerror="this.onerror=null; this.src='https://placehold.co/180x60/f1f5f9/1F2937?text=Pademy';">
+                <h1>Cộng đồng học AI cùng Bùi Đăng Minh Pademy</h1>
+                <p class="description">Chọn nhóm phù hợp và nhấn nút để tham gia ngay.</p>
+            </header>
+            
+            <section class="class-list">
+                <div class="class-block">
+                    <h2 class="class-name">Cộng đồng Công chức học AI</h2>
+                    <p class="class-description">Nhóm dành cho công chức, viên chức muốn ứng dụng AI để nâng cao hiệu suất công việc và chuyên môn.</p>
+                    <a href="?group=congchuc" class="action-button"><i class="fas fa-users"></i> Tham gia nhóm Zalo</a>
+                </div>
+
+                <div class="class-block">
+                    <h2 class="class-name">Lớp miễn phí AI cho Giáo viên (11–12/7)</h2>
+                    <p class="class-description">Khám phá các công cụ AI thiết thực, ứng dụng ngay vào việc soạn giảng, quản lý lớp học và đổi mới phương pháp dạy học.</p>
+                    <a href="?group=giaovien" class="action-button"><i class="fas fa-users"></i> Tham gia nhóm Zalo</a>
+                </div>
+
+                <div class="class-block">
+                    <h2 class="class-name">Lớp miễn phí AI cho Giảng viên & NCKH (13/7)</h2>
+                    <p class="class-description">Ứng dụng AI chuyên sâu để tối ưu hoá quy trình nghiên cứu khoa học, viết báo, và nâng cao chất lượng giảng dạy đại học.</p>
+                    <a href="?group=giangvien" class="action-button"><i class="fas fa-users"></i> Tham gia nhóm Zalo</a>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="contact-info">
+                    <a href="tel:0832343416"><i class="fas fa-phone-alt"></i> 0832343416</a>
+                    <span class="separator">|</span>
+                    <a href="mailto:dangminhbui.111@gmail.com"><i class="fas fa-envelope"></i> dangminhbui.111@gmail.com</a>
+                </div>
+                <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
+            </footer>
         </div>
 
-        <!-- List of Classes -->
-        <section class="class-list">
-            <!-- Class Block 1 -->
-            <div class="class-block">
-                <h2 class="class-name">Cộng đồng Công chức học AI</h2>
-                <p class="class-description">Nhóm dành cho công chức, viên chức muốn ứng dụng AI để nâng cao hiệu suất công việc và chuyên môn.</p>
-                <a href="https://zalo.me/g/lsbbxz292" onclick="openZaloLink(this.href, event)" class="zalo-button">Tham gia nhóm Zalo</a>
+        <!-- Redirect View: Shown when a group is selected -->
+        <div id="redirect-view" class="view">
+            <div class="redirect-page">
+                <img src="https://seeklogo.com/images/Z/zalo-logo-B028226926-seeklogo.com.png" alt="Zalo Icon" class="zalo-icon">
+                <h2 id="redirect-title">Đang chuyển đến Zalo...</h2>
+                <p id="redirect-description">Bạn sẽ được chuyển đến nhóm Zalo. Nếu không có gì xảy ra, hãy nhấn nút bên dưới.</p>
+                <a id="redirect-button" href="#" class="action-button">
+                    <i class="fas fa-external-link-alt"></i> Mở Zalo để tham gia ngay!
+                </a>
+                <a href="/" class="back-link">Quay lại trang chính</a>
             </div>
+        </div>
 
-            <!-- Class Block 2 -->
-            <div class="class-block">
-                <h2 class="class-name">Lớp miễn phí AI cho Giáo viên (11–12/7)</h2>
-                <p class="class-description">Khám phá các công cụ AI thiết thực, ứng dụng ngay vào việc soạn giảng, quản lý lớp học và đổi mới phương pháp dạy học.</p>
-                <a href="https://zalo.me/g/yjzaqh600" onclick="openZaloLink(this.href, event)" class="zalo-button">Tham gia nhóm Zalo</a>
-            </div>
-
-            <!-- Class Block 3 -->
-            <div class="class-block">
-                <h2 class="class-name">Lớp miễn phí AI cho Giảng viên & NCKH (13/7)</h2>
-                <p class="class-description">Ứng dụng AI chuyên sâu để tối ưu hoá quy trình nghiên cứu khoa học, viết báo, và nâng cao chất lượng giảng dạy đại học.</p>
-                <a href="https://zalo.me/g/bxctlp663" onclick="openZaloLink(this.href, event)" class="zalo-button">Tham gia nhóm Zalo</a>
-            </div>
-        </section>
-
-        <!-- Footer Section -->
-        <footer class="footer">
-            <div class="contact-info">
-                <a href="tel:0832343416"><i class="fas fa-phone-alt"></i> 0832343416</a>
-                <span class="separator">|</span>
-                <a href="mailto:dangminhbui.111@gmail.com"><i class="fas fa-envelope"></i> dangminhbui.111@gmail.com</a>
-            </div>
-            <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
-        </footer>
-    </main>
+    </div>
 
     <script>
-        /**
-         * This function attempts to open a Zalo link in a new tab, with a fallback to redirecting the current page.
-         * @param {string} url - The Zalo URL to open.
-         * @param {Event} event - The click event object.
-         */
-        function openZaloLink(url, event) {
-            // Prevent the default link navigation
-            event.preventDefault();
-
-            try {
-                // Try to open in a new tab. This might be blocked by some browsers.
-                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-                if (newWindow) {
-                    newWindow.focus();
-                } else {
-                    // If window.open is blocked (returns null), fall back to redirecting the current page.
-                    window.location.href = url;
-                }
-            } catch (e) {
-                // Catch other potential errors and fall back to redirecting.
-                console.error('Could not open Zalo link in a new window:', e);
-                window.location.href = url;
-            }
-        }
-
-        /**
-         * On page load, check if the user is accessing from the TikTok in-app browser and show a warning if they are.
-         */
         document.addEventListener('DOMContentLoaded', function() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
-            // TikTok's user agent on both iOS and Android contains "TikTok"
-            const isTikTok = userAgent.includes("TikTok");
-
-            if (isTikTok) {
-                const warningDiv = document.getElementById('tiktok-warning');
-                if (warningDiv) {
-                    // Make the warning message visible
-                    warningDiv.style.display = 'block';
+            // Data for the groups
+            const groups = {
+                'congchuc': {
+                    name: 'Cộng đồng Công chức học AI',
+                    link: 'https://zalo.me/g/lsbbxz292'
+                },
+                'giaovien': {
+                    name: 'Lớp miễn phí AI cho Giáo viên',
+                    link: 'https://zalo.me/g/yjzaqh600'
+                },
+                'giangvien': {
+                    name: 'Lớp miễn phí AI cho Giảng viên & NCKH',
+                    link: 'https://zalo.me/g/bxctlp663'
                 }
+            };
+
+            // Simple router based on URL parameter
+            const params = new URLSearchParams(window.location.search);
+            const groupKey = params.get('group');
+
+            const mainView = document.getElementById('main-view');
+            const redirectView = document.getElementById('redirect-view');
+
+            if (groupKey && groups[groupKey]) {
+                // If a group is specified, show the redirect view
+                const group = groups[groupKey];
+                
+                document.getElementById('redirect-title').textContent = `Tham gia nhóm "${group.name}"`;
+                const redirectButton = document.getElementById('redirect-button');
+                redirectButton.href = group.link;
+
+                mainView.classList.remove('active');
+                redirectView.classList.add('active');
+
+                // Automatically attempt to redirect
+                window.location.href = group.link;
+
+            } else {
+                // Otherwise, show the main view
+                mainView.classList.add('active');
+                redirectView.classList.remove('active');
             }
         });
     </script>
