@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa học AI dành cho Công chức - Pademy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --pademy-red: #ef4444;
+            --pademy-red-dark: #dc2626;
+            --pademy-text-dark: #1F2937;
+            --pademy-text-light: #4b5563;
+            --pademy-bg-light: #f9fafb;
+            --pademy-white: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pademy-bg-light);
+            color: var(--pademy-text-dark);
+            line-height: 1.7;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* --- Header --- */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header .logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+        /* --- Hero Section --- */
+        .hero {
+            background-color: var(--pademy-white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        }
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--pademy-red);
+            margin-bottom: 15px;
+        }
+        .hero .subtitle {
+            font-size: 18px;
+            color: var(--pademy-text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .course-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        .info-item { display: flex; align-items: center; gap: 10px; }
+        .info-item .icon { font-size: 20px; color: var(--pademy-red); }
+        .info-item .label { font-size: 15px; }
+        
+        /* --- Action Button --- */
+        .action-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--pademy-red), var(--pademy-red-dark));
+            color: var(--pademy-white);
+            padding: 16px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+        }
+        .action-button:hover { transform: translateY(-3px); box-shadow: 0 7px 25px rgba(239, 68, 68, 0.5); }
+
+        /* --- Content Section --- */
+        .content-section {
+            background: var(--pademy-white);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .content-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--pademy-red);
+        }
+        .benefit-list li, .curriculum-list li, .pain-point-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .benefit-list li i { color: var(--pademy-green); margin-right: 15px; margin-top: 5px; }
+        .curriculum-list li i { color: var(--pademy-red); margin-right: 15px; margin-top: 5px; }
+        .pain-point-list li i { color: var(--pademy-red); margin-right: 15px; margin-top: 5px; }
+        
+        /* --- Accordion --- */
+        .accordion-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background-color: #f9fafb;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+        .accordion-header i.arrow { transition: transform 0.3s ease; }
+        .accordion-item.active .accordion-header i.arrow { transform: rotate(180deg); }
+        .accordion-content {
+            padding: 20px;
+            display: none;
+            border-top: 1px solid #e5e7eb;
+        }
+        .accordion-content ul { padding-left: 0; list-style-type: none; }
+
+        /* --- Instructor & Fee Section --- */
+        .instructor-fee-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        @media (min-width: 768px) {
+            .instructor-fee-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .instructor-info .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .instructor-info h3 { font-size: 18px; margin-bottom: 5px; }
+        .instructor-info p { color: var(--pademy-text-light); }
+        
+        .fee-box {
+            background-color: #fff9f8;
+            border: 1px solid #fecaca;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .fee-box .price-original { text-decoration: line-through; color: var(--pademy-text-light); }
+        .fee-box .price-final { font-size: 32px; font-weight: 800; color: var(--pademy-red); }
+        .fee-box .note { font-size: 14px; }
+
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item p {
+            text-align: center;
+            font-size: 14px;
+            color: var(--pademy-text-light);
+            margin-top: 8px;
+        }
+
+        /* --- Footer --- */
+        .footer { text-align: center; margin-top: 40px; font-size: 14px; color: var(--pademy-text-light); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <img src="https://i.postimg.cc/4d0PH133/LOGO-01.png" alt="Logo Pademy" class="logo" onerror="this.onerror=null; this.src='https://placehold.co/150x50/f1f5f9/1F2937?text=Pademy';">
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Khóa học AI dành cho Công chức</h1>
+                <p class="subtitle">Tối ưu hóa công việc, nâng cao hiệu suất và làm chủ các quy trình báo cáo phức tạp với sức mạnh của Trí tuệ Nhân tạo.</p>
+                
+                <div class="course-info-grid">
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                        <span class="label">Khai giảng: <strong>18, 19, 20/7/2025</strong></span>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-video"></i></div>
+                        <span class="label">Hình thức: <strong>Học qua Zoom</strong></span>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <span class="label">Thời lượng: <strong>3 buổi (2h/buổi)</strong></span>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-tag"></i></div>
+                        <span class="label">Ưu đãi: <strong>Giảm 50% học phí</strong></span>
+                    </div>
+                </div>
+
+                <a href="https://zalo.me/0832343416" class="action-button"><i class="fas fa-edit"></i> Đăng ký ngay qua Zalo</a>
+            </section>
+
+            <section class="content-section">
+                <h2>Khóa học này dành cho ai?</h2>
+                <ul class="pain-point-list">
+                    <li><i class="fas fa-folder-open"></i>Công chức Xã/Phường, Văn phòng Đảng ủy, Đoàn thể đang **loay hoay với hàng núi báo cáo, văn bản**?</li>
+                    <li><i class="fas fa-clock"></i>**Mất hàng giờ** để tổng hợp số liệu, tìm kiếm thông tin trong các văn bản quy phạm pháp luật?</li>
+                    <li><i class="fas fa-file-excel"></i>Cảm thấy công việc **lặp đi lặp lại nhàm chán** và muốn tìm cách đột phá, nâng cao hiệu suất?</li>
+                    <li><i class="fas fa-lightbulb"></i>Muốn ứng dụng công nghệ AI nhưng **không biết bắt đầu từ đâu** cho đúng hướng và phù hợp với đặc thù công việc?</li>
+                </ul>
+                <p style="text-align: center; font-weight: 500; margin-top: 20px;">Nếu bạn đang gặp phải một trong những vấn đề trên, đây chính là khoá học phù hợp với bạn.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Nội dung chương trình chi tiết</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">Buổi 1: Nền tảng & Tư duy AI <i class="fas fa-chevron-down arrow"></i></div>
+                        <div class="accordion-content">
+                            <ul class="curriculum-list">
+                                <li><i class="fas fa-book-open"></i><strong>Nền tảng về AI:</strong> Cách xác định nhiệm vụ, quy trình vận hành, nguyên tắc và rủi ro.</li>
+                                <li><i class="fas fa-comments"></i><strong>Giao tiếp hiệu quả:</strong> Thiết kế câu lệnh cho người mới bắt đầu để tối ưu hiệu quả.</li>
+                                <li><i class="fas fa-sitemap"></i><strong>Tổ chức dữ liệu:</strong> Hướng dẫn phân tích, sắp xếp dữ liệu công việc trước khi dùng AI.</li>
+                                <li><i class="fas fa-laptop-code"></i><strong>Thực hành:</strong> Lên ý tưởng bài phát biểu, tóm tắt văn bản, tạo không gian tra cứu văn bản pháp luật, tạo slide tự động.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Buổi 2: Ứng dụng AI vào nghiệp vụ <i class="fas fa-chevron-down arrow"></i></div>
+                        <div class="accordion-content">
+                            <ul class="curriculum-list">
+                                <li><i class="fas fa-file-alt"></i><strong>Biên bản họp:</strong> Ứng dụng AI để ghi chép và tổng hợp nội dung.</li>
+                                <li><i class="fas fa-file-signature"></i><strong>Soạn thảo văn bản:</strong> Dùng AI trong quy trình 6 bước lập kế hoạch tổ chức sự kiện theo quy định.</li>
+                                <li><i class="fas fa-users-cog"></i><strong>Linh hoạt áp dụng:</strong> Học viên từ các đơn vị khác có thể áp dụng phương pháp này vào quy trình riêng của mình.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Buổi 3: Tối ưu & Mở rộng <i class="fas fa-chevron-down arrow"></i></div>
+                        <div class="accordion-content">
+                            <ul class="curriculum-list">
+                                <li><i class="fas fa-search"></i><strong>Hệ thống hóa quy trình:</strong> Dùng AI để tìm kiếm, truy vấn, tổng hợp thông tin và xây dựng quy trình làm việc.</li>
+                                <li><i class="fas fa-poll"></i><strong>Khảo sát & Báo cáo:</strong> Ứng dụng AI làm khảo sát, thu thập dân ý và tạo báo cáo nhanh.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="instructor-fee-grid">
+                    <div class="instructor-info">
+                        <h2>Thông tin giảng viên</h2>
+                        <img src="https://i.postimg.cc/8cqfRrK6/16-08-HNMRVICKYBUIPFCC18-H-TB39402.jpg" alt="Ảnh đại diện Bùi Đăng Minh" class="profile-pic" onerror="this.onerror=null; this.src='https://placehold.co/100x100/ef4444/ffffff?text=BĐM';">
+                        <h3>Bùi Đăng Minh</h3>
+                        <p>Giám đốc điều hành PademyVN & Chuyên gia tư vấn khởi nghiệp, trường ĐH FPT Hà Nội. Với kinh nghiệm thực chiến trong việc tư vấn và đào tạo cho nhiều đơn vị, Minh tập trung vào việc thay đổi tư duy để ứng dụng AI một cách bài bản và hiệu quả.</p>
+                    </div>
+                    <div class="fee-info">
+                        <h2>Học phí & Quyền lợi</h2>
+                        <div class="fee-box">
+                            <div class="price-original">Giá gốc: 2.000.000 VNĐ</div>
+                            <div class="price-final">1.000.000 VNĐ</div>
+                            <div class="note">Ưu đãi đặc biệt cho thành viên cộng đồng</div>
+                        </div>
+                        <ul class="benefit-list" style="margin-top: 20px;">
+                            <li><i class="fas fa-check-circle"></i>Video Record xem trọn đời.</li>
+                            <li><i class="fas fa-check-circle"></i>Học lại miễn phí trong năm 2025.</li>
+                            <li><i class="fas fa-check-circle"></i>Nhóm Zalo hỗ trợ trọn đời.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Hình ảnh các lớp học đã tổ chức</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/ef4444/ffffff?text=Pademy" alt="Lớp học tại Ban Quản lý rủi ro Cục Hải Quan Việt Nam" onerror="this.onerror=null; this.src='https://placehold.co/600x400/ef4444/ffffff?text=Ảnh+lớp+học';">
+                        <p>Lớp tại Ban Quản lý rủi ro - Cục Hải Quan Việt Nam</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/600x400/1F2937/ffffff?text=Pademy" alt="Lớp học tại trường đại học Quản lý và công nghệ Hải Phòng" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1F2937/ffffff?text=Ảnh+lớp+học';">
+                        <p>Lớp tại ĐH Quản lý và Công nghệ Hải Phòng</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" style="text-align: center;">
+                <h2>Sẵn sàng nâng cao hiệu suất công việc của bạn?</h2>
+                <p style="color: var(--pademy-text-light); margin-bottom: 30px;">Đăng ký ngay để nhận ưu đãi và làm chủ công nghệ AI trong công việc hàng ngày.</p>
+                <a href="https://zalo.me/0832343416" class="action-button"><i class="fas fa-edit"></i> Đăng ký ngay qua Zalo</a>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <p>Liên hệ: <strong>0832343416</strong> | <strong>dangminhbui.111@gmail.com</strong></p>
+            <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- ACCORDION LOGIC ---
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    // Close other open items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.accordion-content').style.display = 'none';
+                        }
+                    });
+
+                    // Toggle current item
+                    const content = item.querySelector('.accordion-content');
+                    item.classList.toggle('active');
+                    if (item.classList.contains('active')) {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
