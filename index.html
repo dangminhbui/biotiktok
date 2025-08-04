@@ -36,6 +36,14 @@
             padding: 20px;
         }
         
+        /* --- VIEWS --- */
+        .view {
+            display: none; /* Hide all views by default */
+        }
+        .view.active {
+            display: block; /* Show only the active view */
+        }
+
         /* --- Header --- */
         .header {
             text-align: center;
@@ -236,6 +244,85 @@
             margin-right: 10px;
             margin-top: 4px;
         }
+        .philosophy-box {
+            background-color: var(--pademy-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--pademy-red);
+        }
+        .philosophy-box .philosophy-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .philosophy-box .philosophy-item:last-child { margin-bottom: 0; }
+        .philosophy-box .philosophy-icon {
+            font-size: 18px;
+            color: var(--pademy-red);
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+        .philosophy-box .philosophy-text strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .philosophy-box .philosophy-text span { font-size: 14px; }
+
+        /* --- INSTRUCTION PAGE --- */
+        .instruction-page {
+            background-color: var(--pademy-white);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .instruction-page h2 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--pademy-text-dark);
+            text-align: center;
+        }
+        .instruction-box {
+            border: 2px dashed var(--pademy-red);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .instruction-box p {
+            font-size: 16px;
+            color: var(--pademy-text-dark);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .image-guide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+        .instruction-image {
+            max-width: 100%;
+            width: 280px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .instruction-page .action-button {
+            background: var(--pademy-green);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            font-size: 18px;
+            padding: 16px 24px;
+        }
+        .instruction-page .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--pademy-text-light);
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+        }
 
         /* --- Footer --- */
         .footer { text-align: center; margin-top: 40px; font-size: 14px; color: var(--pademy-text-light); }
@@ -249,94 +336,154 @@
 <body>
 
     <div class="container">
-        <header class="header">
-            <img src="https://i.postimg.cc/4d0PH133/LOGO-01.png" alt="Logo Pademy" class="logo" onerror="this.onerror=null; this.src='https://placehold.co/150x50/f1f5f9/1F2937?text=Pademy';">
-        </header>
+        
+        <!-- Main View -->
+        <div id="main-view" class="view active">
+            <header class="header">
+                <img src="https://i.postimg.cc/4d0PH133/LOGO-01.png" alt="Logo Pademy" class="logo" onerror="this.onerror=null; this.src='https://placehold.co/150x50/f1f5f9/1F2937?text=Pademy';">
+            </header>
 
-        <main>
-            <section class="profile-hero">
-                <img src="https://i.postimg.cc/8cqfRrK6/16-08-HNMRVICKYBUIPFCC18-H-TB39402.jpg" alt="Ảnh đại diện Bùi Đăng Minh" class="profile-pic" onerror="this.onerror=null; this.src='https://placehold.co/128x128/ef4444/ffffff?text=BĐM';">
-                <h1>Bùi Đăng Minh</h1>
-                <p class="title">Giám đốc điều hành PademyVN<br>Chuyên gia tư vấn khởi nghiệp - trường đại học FPT Hà Nội</p>
-            </section>
+            <main>
+                <section class="profile-hero">
+                    <img src="https://i.postimg.cc/8cqfRrK6/16-08-HNMRVICKYBUIPFCC18-H-TB39402.jpg" alt="Ảnh đại diện Bùi Đăng Minh" class="profile-pic" onerror="this.onerror=null; this.src='https://placehold.co/128x128/ef4444/ffffff?text=BĐM';">
+                    <h1>Bùi Đăng Minh</h1>
+                    <p class="title">Giám đốc điều hành PademyVN<br>Chuyên gia tư vấn khởi nghiệp - trường đại học FPT Hà Nội</p>
+                </section>
 
-            <h2 class="page-title">Các chương trình đào tạo AI cho Công chức</h2>
-            <section class="programs-grid">
-                <!-- Program 1: 1-on-1 Coaching -->
-                <div class="program-card premium">
-                    <div>
-                        <div class="icon"><i class="fas fa-star"></i></div>
-                        <h3>Kèm cặp chuyên sâu 1:1</h3>
-                        <p>Lộ trình được thiết kế riêng theo nhu cầu và mục tiêu của bạn, giải quyết trực tiếp các vấn đề và thách thức trong công việc để tạo ra hiệu quả vượt trội.</p>
-                    </div>
-                    <div>
-                        <a href="sms:0832343416" class="action-button premium-btn"><i class="fas fa-comment-dots"></i> Nhắn tin thảo luận</a>
-                        <a href="mailto:dangminhbui.111@gmail.com" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
-                    </div>
-                </div>
-
-                <!-- Program 2: Group Class -->
-                <div class="program-card">
-                    <div>
-                        <div class="icon"><i class="fas fa-users"></i></div>
-                        <h3>Lớp học chung</h3>
-                        <p>Khóa học chuyên sâu giúp công chức ứng dụng AI để tối ưu hóa công việc, quy trình và báo cáo.</p>
-                        <p class="note">Lớp ngày 8/8 đã đủ học viên. Lịch khai giảng mới nhất:</p>
-                        <div class="course-highlights">
-                            <span><i class="fas fa-calendar-alt"></i> 22, 23, 24/08/2025</span>
-                            <span><i class="fas fa-clock"></i> 20h - 22h</span>
-                            <span><i class="fas fa-video"></i> Học qua Zoom</span>
+                <h2 class="page-title">Các chương trình đào tạo AI cho Công chức</h2>
+                <section class="programs-grid">
+                    <!-- Program 1: 1-on-1 Coaching -->
+                    <div class="program-card premium">
+                        <div>
+                            <div class="icon"><i class="fas fa-star"></i></div>
+                            <h3>Kèm cặp chuyên sâu 1:1</h3>
+                            <p>Lộ trình được thiết kế riêng theo nhu cầu và mục tiêu của bạn, giải quyết trực tiếp các vấn đề và thách thức trong công việc để tạo ra hiệu quả vượt trội.</p>
+                        </div>
+                        <div>
+                            <a href="?action=contact&type=sms_1on1" class="action-button premium-btn"><i class="fas fa-comment-dots"></i> Nhắn tin thảo luận</a>
+                            <a href="?action=contact&type=email_1on1" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
                         </div>
                     </div>
-                    <div>
-                        <a href="sms:0832343416" class="action-button"><i class="fas fa-comment-dots"></i> Nhắn tin đăng ký</a>
-                        <a href="mailto:dangminhbui.111@gmail.com" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
-                    </div>
-                </div>
 
-                <!-- Program 3: Corporate Training -->
-                <div class="program-card">
-                    <div>
-                        <div class="icon"><i class="fas fa-building"></i></div>
-                        <h3>Đào tạo cho Đơn vị</h3>
-                        <p>Các đơn vị, tổ chức muốn triển khai đào tạo riêng cho đội ngũ nhân sự vui lòng liên hệ để được tư vấn chương trình phù hợp.</p>
+                    <!-- Program 2: Group Class -->
+                    <div class="program-card">
+                        <div>
+                            <div class="icon"><i class="fas fa-users"></i></div>
+                            <h3>Lớp học chung</h3>
+                            <p>Khóa học chuyên sâu giúp công chức ứng dụng AI để tối ưu hóa công việc, quy trình và báo cáo.</p>
+                            <p class="note">Lớp ngày 8/8 đã đủ học viên. Lịch khai giảng mới nhất:</p>
+                            <div class="course-highlights">
+                                <span><i class="fas fa-calendar-alt"></i> 22, 23, 24/08/2025</span>
+                                <span><i class="fas fa-clock"></i> 20h - 22h</span>
+                                <span><i class="fas fa-video"></i> Học qua Zoom</span>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="?action=contact&type=sms_lopchung" class="action-button"><i class="fas fa-comment-dots"></i> Nhắn tin đăng ký</a>
+                            <a href="?action=contact&type=email_lopchung" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="tel:0904652383" class="action-button corporate-btn"><i class="fas fa-phone-alt"></i> Gọi điện trao đổi</a>
-                        <a href="mailto:dangminhbui.111@gmail.com" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
-                    </div>
-                </div>
-            </section>
 
-            <section class="about-section">
-                <div class="about-grid">
-                    <div class="consultation-topics">
-                        <h3>Minh có thể tư vấn gì cho bạn?</h3>
-                        <ul>
-                            <li><i class="fas fa-user-tie"></i>Ứng dụng AI dành cho Công chức, Viên chức.</li>
-                            <li><i class="fas fa-chalkboard-teacher"></i>Ứng dụng AI trong Giáo dục.</li>
-                            <li><i class="fas fa-rocket"></i>Tư vấn khởi nghiệp & đổi mới sáng tạo.</li>
-                        </ul>
+                    <!-- Program 3: Corporate Training -->
+                    <div class="program-card">
+                        <div>
+                            <div class="icon"><i class="fas fa-building"></i></div>
+                            <h3>Đào tạo cho Đơn vị</h3>
+                            <p>Các đơn vị, tổ chức muốn triển khai đào tạo riêng cho đội ngũ nhân sự vui lòng liên hệ để được tư vấn chương trình phù hợp.</p>
+                        </div>
+                        <div>
+                            <a href="?action=contact&type=tel_donvi" class="action-button corporate-btn"><i class="fas fa-phone-alt"></i> Gọi điện trao đổi</a>
+                            <a href="?action=contact&type=email_donvi" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
+                        </div>
                     </div>
-                    <div class="philosophy-box" style="margin-top:0;">
-                        <h3>Triết lý đồng hành</h3>
-                        <div class="philosophy-item">
-                            <div class="philosophy-icon"><i class="fas fa-brain"></i></div>
-                            <div class="philosophy-text">
-                                <strong>Tập trung vào tư duy</strong>
-                                <span>Không chỉ là công cụ, mà là cách tổ chức công việc, quy trình và dữ liệu một cách khoa học.</span>
+                </section>
+
+                <section class="about-section">
+                    <div class="about-grid">
+                        <div class="consultation-topics">
+                            <h3>Minh có thể tư vấn gì cho bạn?</h3>
+                            <ul>
+                                <li><i class="fas fa-user-tie"></i>Ứng dụng AI dành cho Công chức, Viên chức.</li>
+                                <li><i class="fas fa-chalkboard-teacher"></i>Ứng dụng AI trong Giáo dục.</li>
+                                <li><i class="fas fa-rocket"></i>Tư vấn khởi nghiệp & đổi mới sáng tạo.</li>
+                            </ul>
+                        </div>
+                        <div class="philosophy-box" style="margin-top:0;">
+                            <h3>Triết lý đồng hành</h3>
+                            <div class="philosophy-item">
+                                <div class="philosophy-icon"><i class="fas fa-brain"></i></div>
+                                <div class="philosophy-text">
+                                    <strong>Tập trung vào tư duy</strong>
+                                    <span>Không chỉ là công cụ, mà là cách tổ chức công việc, quy trình và dữ liệu một cách khoa học.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
 
-        <footer class="footer">
-            <p>Liên hệ: <strong>0832343416</strong> (Lớp học & 1:1) - <strong>0904652383</strong> (Đào tạo Đơn vị)</p>
-            <p>Email: <strong>dangminhbui.111@gmail.com</strong></p>
-            <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
-        </footer>
+            <footer class="footer">
+                <p>Liên hệ: <strong>0832343416</strong> (Lớp học & 1:1) - <strong>0904652383</strong> (Đào tạo Đơn vị)</p>
+                <p>Email: <strong>dangminhbui.111@gmail.com</strong></p>
+                <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
+            </footer>
+        </div>
+
+        <!-- Instruction View -->
+        <div id="instruction-view" class="view">
+             <div class="instruction-page">
+                <h2 id="instruction-title">Để liên hệ, hãy làm theo 2 bước:</h2>
+                <div class="instruction-box">
+                    <p><strong>Bước 1:</strong> Mở link này bằng trình duyệt ngoài (Safari, Chrome).</p>
+                    <div class="image-guide">
+                        <img src="https://i.postimg.cc/fL7M2SRd/1.jpg" alt="Hướng dẫn mở bằng trình duyệt - bước 1" class="instruction-image" onerror="this.onerror=null; this.src='https://placehold.co/280x500/f1f5f9/1F2937?text=Ảnh+hướng+dẫn+1';">
+                        <img src="https://i.postimg.cc/RFxMLL49/2.jpg" alt="Hướng dẫn mở bằng trình duyệt - bước 2" class="instruction-image" onerror="this.onerror=null; this.src='https://placehold.co/280x150/f1f5f9/1F2937?text=Ảnh+hướng+dẫn+2';">
+                    </div>
+                    <p style="font-size: 14px; color: var(--pademy-text-light);">Nhấn vào biểu tượng chia sẻ hoặc dấu "..." ở góc màn hình và chọn "Mở bằng trình duyệt".</p>
+                </div>
+                <div class="instruction-box">
+                    <p><strong>Bước 2:</strong> Sau khi đã mở bằng trình duyệt, nhấn nút bên dưới để liên hệ.</p>
+                    <a id="final-action-button" href="#" class="action-button" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-paper-plane"></i> Liên hệ ngay
+                    </a>
+                </div>
+                <a href="/" class="back-link">« Quay lại trang chính</a>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const actions = {
+                'sms_lopchung': { title: 'Để nhắn tin đăng ký lớp học, hãy làm theo 2 bước:', link: 'sms:0832343416', buttonText: '<i class="fas fa-comment-dots"></i> Mở ứng dụng Nhắn tin' },
+                'email_lopchung': { title: 'Để gửi Email đăng ký lớp học, hãy làm theo 2 bước:', link: 'mailto:dangminhbui.111@gmail.com', buttonText: '<i class="fas fa-envelope"></i> Mở ứng dụng Email' },
+                'sms_1on1': { title: 'Để nhắn tin thảo luận 1:1, hãy làm theo 2 bước:', link: 'sms:0832343416', buttonText: '<i class="fas fa-comment-dots"></i> Mở ứng dụng Nhắn tin' },
+                'email_1on1': { title: 'Để gửi Email thảo luận 1:1, hãy làm theo 2 bước:', link: 'mailto:dangminhbui.111@gmail.com', buttonText: '<i class="fas fa-envelope"></i> Mở ứng dụng Email' },
+                'tel_donvi': { title: 'Để gọi điện trao đổi, hãy làm theo 2 bước:', link: 'tel:0904652383', buttonText: '<i class="fas fa-phone-alt"></i> Mở ứng dụng Điện thoại' },
+                'email_donvi': { title: 'Để gửi Email cho đơn vị, hãy làm theo 2 bước:', link: 'mailto:dangminhbui.111@gmail.com', buttonText: '<i class="fas fa-envelope"></i> Mở ứng dụng Email' }
+            };
+
+            const params = new URLSearchParams(window.location.search);
+            const actionKey = params.get('action');
+            const typeKey = params.get('type');
+
+            const mainView = document.getElementById('main-view');
+            const instructionView = document.getElementById('instruction-view');
+
+            if (actionKey === 'contact' && actions[typeKey]) {
+                const action = actions[typeKey];
+                document.getElementById('instruction-title').textContent = action.title;
+                const finalButton = document.getElementById('final-action-button');
+                finalButton.href = action.link;
+                finalButton.innerHTML = action.buttonText;
+
+                mainView.style.display = 'none';
+                instructionView.style.display = 'block';
+            } else {
+                mainView.style.display = 'block';
+                instructionView.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
