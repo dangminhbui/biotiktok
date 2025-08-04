@@ -187,26 +187,6 @@
             box-shadow: 0 4px 15px rgba(167, 139, 250, 0.4);
         }
         
-        .email-button {
-            display: inline-block;
-            width: 100%;
-            background-color: var(--pademy-white);
-            color: var(--pademy-text-dark);
-            border: 2px solid #e5e7eb;
-            margin-top: 10px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
-        .email-button:hover {
-            background-color: var(--pademy-bg);
-            border-color: var(--pademy-red);
-        }
-
         /* --- About Section --- */
         .about-section {
             background: var(--pademy-white);
@@ -323,6 +303,34 @@
             text-align: center;
             width: 100%;
         }
+        .fallback-instruction {
+            margin-top: 24px;
+            padding: 15px;
+            background-color: #fffbe6;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #92400e;
+            line-height: 1.5;
+        }
+        .copy-button {
+            background-color: var(--pademy-white);
+            color: var(--pademy-text-dark);
+            border: 2px solid #e5e7eb;
+            margin-top: 10px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: var(--pademy-bg);
+            border-color: var(--pademy-red);
+        }
 
         /* --- Footer --- */
         .footer { text-align: center; margin-top: 40px; font-size: 14px; color: var(--pademy-text-light); }
@@ -359,10 +367,7 @@
                             <h3>Kèm cặp chuyên sâu 1:1</h3>
                             <p>Lộ trình được thiết kế riêng theo nhu cầu và mục tiêu của bạn, giải quyết trực tiếp các vấn đề và thách thức trong công việc để tạo ra hiệu quả vượt trội.</p>
                         </div>
-                        <div>
-                            <a href="?action=contact&type=sms_1on1" class="action-button premium-btn"><i class="fas fa-comment-dots"></i> Nhắn tin thảo luận</a>
-                            <a href="?action=contact&type=email_1on1" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
-                        </div>
+                        <a href="?action=contact&type=sms_1on1" class="action-button premium-btn"><i class="fas fa-comment-dots"></i> Nhắn tin thảo luận</a>
                     </div>
 
                     <!-- Program 2: Group Class -->
@@ -378,10 +383,7 @@
                                 <span><i class="fas fa-video"></i> Học qua Zoom</span>
                             </div>
                         </div>
-                        <div>
-                            <a href="?action=contact&type=sms_lopchung" class="action-button"><i class="fas fa-comment-dots"></i> Nhắn tin đăng ký</a>
-                            <a href="?action=contact&type=email_lopchung" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
-                        </div>
+                        <a href="?action=contact&type=sms_lopchung" class="action-button"><i class="fas fa-comment-dots"></i> Nhắn tin đăng ký</a>
                     </div>
 
                     <!-- Program 3: Corporate Training -->
@@ -391,10 +393,7 @@
                             <h3>Đào tạo cho Đơn vị</h3>
                             <p>Các đơn vị, tổ chức muốn triển khai đào tạo riêng cho đội ngũ nhân sự vui lòng liên hệ để được tư vấn chương trình phù hợp.</p>
                         </div>
-                        <div>
-                            <a href="?action=contact&type=tel_donvi" class="action-button corporate-btn"><i class="fas fa-phone-alt"></i> Gọi điện trao đổi</a>
-                            <a href="?action=contact&type=email_donvi" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
-                        </div>
+                        <a href="?action=contact&type=tel_donvi" class="action-button corporate-btn"><i class="fas fa-phone-alt"></i> Gọi điện trao đổi</a>
                     </div>
                 </section>
 
@@ -447,6 +446,11 @@
                         <i class="fas fa-paper-plane"></i> Liên hệ ngay
                     </a>
                 </div>
+                <div class="fallback-instruction">
+                    <p><strong>Nếu nút trên không hoạt động:</strong></p>
+                    <button id="copy-button" class="copy-button"><i class="fas fa-copy"></i> Sao chép thông tin liên hệ</button>
+                    <p style="font-size: 13px; margin-top: 5px;">Sau đó dán vào ứng dụng tương ứng (Tin nhắn, Điện thoại).</p>
+                </div>
                 <a href="/" class="back-link">« Quay lại trang chính</a>
             </div>
         </div>
@@ -455,12 +459,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const actions = {
-                'sms_lopchung': { title: 'Để nhắn tin đăng ký lớp học, hãy làm theo 2 bước:', link: 'sms:0832343416', buttonText: '<i class="fas fa-comment-dots"></i> Mở ứng dụng Nhắn tin' },
-                'email_lopchung': { title: 'Để gửi Email đăng ký lớp học, hãy làm theo 2 bước:', link: 'mailto:dangminhbui.111@gmail.com', buttonText: '<i class="fas fa-envelope"></i> Mở ứng dụng Email' },
-                'sms_1on1': { title: 'Để nhắn tin thảo luận 1:1, hãy làm theo 2 bước:', link: 'sms:0832343416', buttonText: '<i class="fas fa-comment-dots"></i> Mở ứng dụng Nhắn tin' },
-                'email_1on1': { title: 'Để gửi Email thảo luận 1:1, hãy làm theo 2 bước:', link: 'mailto:dangminhbui.111@gmail.com', buttonText: '<i class="fas fa-envelope"></i> Mở ứng dụng Email' },
-                'tel_donvi': { title: 'Để gọi điện trao đổi, hãy làm theo 2 bước:', link: 'tel:0904652383', buttonText: '<i class="fas fa-phone-alt"></i> Mở ứng dụng Điện thoại' },
-                'email_donvi': { title: 'Để gửi Email cho đơn vị, hãy làm theo 2 bước:', link: 'mailto:dangminhbui.111@gmail.com', buttonText: '<i class="fas fa-envelope"></i> Mở ứng dụng Email' }
+                'sms_lopchung': { title: 'Để nhắn tin đăng ký lớp học:', link: 'sms:0832343416', info: '0832343416', buttonText: '<i class="fas fa-comment-dots"></i> Mở ứng dụng Nhắn tin' },
+                'sms_1on1': { title: 'Để nhắn tin thảo luận 1:1:', link: 'sms:0832343416', info: '0832343416', buttonText: '<i class="fas fa-comment-dots"></i> Mở ứng dụng Nhắn tin' },
+                'tel_donvi': { title: 'Để gọi điện trao đổi:', link: 'tel:0904652383', info: '0904652383', buttonText: '<i class="fas fa-phone-alt"></i> Mở ứng dụng Điện thoại' }
             };
 
             const params = new URLSearchParams(window.location.search);
@@ -477,11 +478,30 @@
                 finalButton.href = action.link;
                 finalButton.innerHTML = action.buttonText;
 
+                const copyButton = document.getElementById('copy-button');
+                copyButton.setAttribute('data-info', action.info);
+
                 mainView.style.display = 'none';
                 instructionView.style.display = 'block';
             } else {
                 mainView.style.display = 'block';
                 instructionView.style.display = 'none';
+            }
+
+            const copyBtn = document.getElementById('copy-button');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    const infoToCopy = this.getAttribute('data-info');
+                    navigator.clipboard.writeText(infoToCopy).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Đã sao chép!';
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Could not copy text: ', err);
+                    });
+                });
             }
         });
     </script>
