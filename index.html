@@ -12,20 +12,20 @@
         :root {
             --pademy-red: #ef4444;
             --pademy-red-dark: #dc2626;
-            --pademy-blue: #3b82f6;
+            --pademy-yellow: #FFCD00;
             --pademy-purple: #a78bfa;
             --pademy-purple-dark: #8b5cf6;
-            --pademy-text-dark: #1F2937;
+            --pademy-text-dark: #111827;
             --pademy-text-light: #4b5563;
-            --pademy-bg-light: #f9fafb;
-            --pademy-white: #ffffff;
+            --pademy-bg: #F9FAFB;
+            --pademy-white: #FFFFFF;
             --shadow-color: rgba(0, 0, 0, 0.08);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--pademy-bg-light);
+            background-color: var(--pademy-bg);
             color: var(--pademy-text-dark);
             line-height: 1.7;
         }
@@ -35,17 +35,11 @@
             margin: 0 auto;
             padding: 20px;
         }
-        /* --- VIEWS --- */
-        .view {
-            display: none; /* Hide all views by default */
-        }
-        .view.active {
-            display: block; /* Show only the active view */
-        }
+        
         /* --- Header --- */
         .header {
             text-align: center;
-            padding: 20px 0;
+            padding-bottom: 20px;
         }
         .header .logo {
             max-width: 150px;
@@ -54,11 +48,12 @@
         
         /* --- Profile Hero Section --- */
         .profile-hero {
-            background-color: var(--pademy-white);
+            background: linear-gradient(135deg, var(--pademy-red), var(--pademy-red-dark));
+            color: var(--pademy-white);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.3);
             text-align: center;
         }
         .profile-pic {
@@ -68,120 +63,21 @@
             object-fit: cover;
             object-position: center;
             border: 4px solid var(--pademy-white);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             margin-bottom: 15px;
         }
         .profile-hero h1 {
             font-size: 28px;
             font-weight: 800;
             margin: 0;
+            color: var(--pademy-white);
         }
         .profile-hero .title {
             font-size: 16px;
-            color: var(--pademy-red);
+            color: var(--pademy-yellow);
             font-weight: 500;
             margin-bottom: 20px;
             line-height: 1.5;
-        }
-        .profile-content {
-            text-align: left;
-            margin-top: 20px;
-        }
-        .profile-content h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--pademy-text-dark);
-        }
-        
-        /* --- CONSULTATION AREA --- */
-        .consultation-area {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-top: 25px;
-        }
-        @media (min-width: 640px) {
-            .consultation-area {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        .consultation-topics ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .consultation-topics li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-        }
-        .consultation-topics li i {
-            color: var(--pademy-red);
-            margin-right: 10px;
-            margin-top: 4px;
-        }
-        .consultation-box-1on1 {
-            background: #fff9f8;
-            border: 1px solid #fecaca;
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-        .consultation-box-1on1 .icon {
-            font-size: 28px;
-            color: var(--pademy-red);
-            margin-bottom: 10px;
-        }
-        .consultation-box-1on1 h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--pademy-red);
-        }
-        .consultation-box-1on1 p {
-            font-size: 14px;
-            color: var(--pademy-text-light);
-            margin-bottom: 15px;
-        }
-        
-        /* --- NEW PHILOSOPHY BOX --- */
-        .philosophy-box {
-            background-color: var(--pademy-bg-light);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--pademy-red);
-            text-align: left;
-            margin-top: 25px;
-        }
-        .philosophy-box .philosophy-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        .philosophy-box .philosophy-item:last-child { margin-bottom: 0; }
-        .philosophy-box .philosophy-icon {
-            font-size: 18px;
-            color: var(--pademy-red);
-            margin-right: 15px;
-            margin-top: 2px;
-        }
-        .philosophy-box .philosophy-text strong {
-            display: block;
-            font-size: 15px;
-            font-weight: 700;
-        }
-        .philosophy-box .philosophy-text span { font-size: 14px; }
-        .philosophy-box .philosophy-note {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px dashed #ddd;
-            font-size: 13px;
-            font-style: italic;
-            color: var(--pademy-text-light);
         }
 
         /* --- Programs Section --- */
@@ -205,11 +101,18 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-top: 4px solid var(--pademy-red);
+        }
+        .program-card.premium {
+            border-top-color: var(--pademy-yellow);
         }
         .program-card .icon {
             font-size: 28px;
             color: var(--pademy-red);
             margin-bottom: 15px;
+        }
+        .program-card.premium .icon {
+            color: var(--pademy-yellow);
         }
         .program-card h3 {
             font-size: 20px;
@@ -234,10 +137,18 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            background-color: var(--pademy-bg-light);
+            background-color: var(--pademy-bg);
             padding: 5px 10px;
             border-radius: 20px;
         }
+        .program-card .note {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--pademy-red);
+            margin-bottom: 15px;
+        }
+
+        /* --- Action Button --- */
         .action-button {
             display: inline-block;
             width: 100%;
@@ -252,68 +163,78 @@
             box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
             text-align: center;
         }
-        .action-button.blue {
-            background: linear-gradient(90deg, var(--pademy-blue), #2563eb);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        .action-button:hover {
+            transform: translateY(-2px);
         }
-        .action-button.purple {
+        .action-button.premium-btn {
+            background: var(--pademy-yellow);
+            color: var(--pademy-text-dark);
+            box-shadow: 0 4px 15px rgba(255, 205, 0, 0.4);
+        }
+        .action-button.premium-btn:hover {
+            background: #e6b800;
+        }
+        .action-button.corporate-btn {
             background: linear-gradient(90deg, var(--pademy-purple), var(--pademy-purple-dark));
             box-shadow: 0 4px 15px rgba(167, 139, 250, 0.4);
         }
-
-        /* --- INSTRUCTION PAGE --- */
-        .instruction-page {
-            background-color: var(--pademy-white);
-            padding: 30px 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-        .instruction-page h2 {
-            font-size: 22px;
-            margin-bottom: 16px;
-            color: var(--pademy-text-dark);
-            text-align: center;
-        }
-        .instruction-box {
-            border: 2px dashed var(--pademy-red);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-        .instruction-box p {
-            font-size: 16px;
-            color: var(--pademy-text-dark);
-            font-weight: 500;
-            margin-bottom: 16px;
-        }
-        .image-guide {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 16px;
-            margin-bottom: 16px;
-        }
-        .instruction-image {
-            max-width: 100%;
-            width: 280px;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
-        .instruction-page .action-button {
-            background: var(--pademy-green);
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
-            font-size: 18px;
-            padding: 16px 24px;
-        }
-        .instruction-page .back-link {
+        
+        .email-button {
             display: inline-block;
-            margin-top: 20px;
-            font-size: 14px;
-            color: var(--pademy-text-light);
-            text-decoration: none;
-            text-align: center;
             width: 100%;
+            background-color: var(--pademy-white);
+            color: var(--pademy-text-dark);
+            border: 2px solid #e5e7eb;
+            margin-top: 10px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .email-button:hover {
+            background-color: var(--pademy-bg);
+            border-color: var(--pademy-red);
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            background: var(--pademy-white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            text-align: left;
+            margin-top: 30px;
+        }
+        .about-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 640px) {
+            .about-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .consultation-topics ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .consultation-topics li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .consultation-topics li i {
+            color: var(--pademy-red);
+            margin-right: 10px;
+            margin-top: 4px;
         }
 
         /* --- Footer --- */
@@ -328,154 +249,94 @@
 <body>
 
     <div class="container">
-        
-        <!-- Main View -->
-        <div id="main-view" class="view active">
-            <header class="header">
-                <img src="https://i.postimg.cc/4d0PH133/LOGO-01.png" alt="Logo Pademy" class="logo" onerror="this.onerror=null; this.src='https://placehold.co/150x50/f1f5f9/1F2937?text=Pademy';">
-            </header>
+        <header class="header">
+            <img src="https://i.postimg.cc/4d0PH133/LOGO-01.png" alt="Logo Pademy" class="logo" onerror="this.onerror=null; this.src='https://placehold.co/150x50/f1f5f9/1F2937?text=Pademy';">
+        </header>
 
-            <main>
-                <section class="profile-hero">
-                    <img src="https://i.postimg.cc/8cqfRrK6/16-08-HNMRVICKYBUIPFCC18-H-TB39402.jpg" alt="Ảnh đại diện Bùi Đăng Minh" class="profile-pic" onerror="this.onerror=null; this.src='https://placehold.co/128x128/ef4444/ffffff?text=BĐM';">
-                    <h1>Bùi Đăng Minh</h1>
-                    <p class="title">Giám đốc điều hành PademyVN<br>Chuyên gia tư vấn khởi nghiệp - trường đại học FPT Hà Nội</p>
-                    <div class="profile-content">
-                        <div class="consultation-area">
-                            <div class="consultation-topics">
-                                <h3>Minh có thể tư vấn gì cho bạn?</h3>
-                                <ul>
-                                    <li><i class="fas fa-chalkboard-teacher"></i>Ứng dụng AI trong Giáo dục.</li>
-                                    <li><i class="fas fa-user-tie"></i>Ứng dụng AI dành cho Công chức.</li>
-                                    <li><i class="fas fa-rocket"></i>Tư vấn khởi nghiệp & đổi mới sáng tạo.</li>
-                                </ul>
-                            </div>
-                            <div class="consultation-box-1on1">
-                                <div class="icon"><i class="fas fa-user-graduate"></i></div>
-                                <h4>Kèm cặp chuyên sâu 1:1</h4>
-                                <p>Liên hệ trực tiếp để được tư vấn riêng.</p>
-                                <a href="sms:0832343416" class="action-button" style="width: auto; padding: 10px 20px; font-size: 14px;"><i class="fas fa-comment-dots"></i> Nhắn tin ngay</a>
-                            </div>
-                        </div>
+        <main>
+            <section class="profile-hero">
+                <img src="https://i.postimg.cc/8cqfRrK6/16-08-HNMRVICKYBUIPFCC18-H-TB39402.jpg" alt="Ảnh đại diện Bùi Đăng Minh" class="profile-pic" onerror="this.onerror=null; this.src='https://placehold.co/128x128/ef4444/ffffff?text=BĐM';">
+                <h1>Bùi Đăng Minh</h1>
+                <p class="title">Giám đốc điều hành PademyVN<br>Chuyên gia tư vấn khởi nghiệp - trường đại học FPT Hà Nội</p>
+            </section>
 
-                        <div class="philosophy-box">
-                            <h3>Triết lý đồng hành</h3>
-                            <div class="philosophy-item">
-                                <div class="philosophy-icon"><i class="fas fa-brain"></i></div>
-                                <div class="philosophy-text">
-                                    <strong>Tập trung vào tư duy</strong>
-                                    <span>Không chỉ là công cụ, mà là cách tổ chức công việc, quy trình và dữ liệu một cách khoa học.</span>
-                                </div>
-                            </div>
-                            <div class="philosophy-item">
-                                <div class="philosophy-icon"><i class="fas fa-rocket"></i></div>
-                                <div class="philosophy-text">
-                                    <strong>Mục tiêu hiệu quả vượt trội</strong>
-                                    <span>Giúp ứng dụng AI tối ưu cho cả cá nhân và tổ chức của bạn.</span>
-                                </div>
-                            </div>
-                            <div class="philosophy-note">
-                                <strong>Lưu ý:</strong> Minh không phù hợp nếu bạn chỉ muốn biết nhiều công cụ để giải quyết công việc trước mắt.
-                            </div>
-                        </div>
+            <h2 class="page-title">Các chương trình đào tạo AI cho Công chức</h2>
+            <section class="programs-grid">
+                <!-- Program 1: 1-on-1 Coaching -->
+                <div class="program-card premium">
+                    <div>
+                        <div class="icon"><i class="fas fa-star"></i></div>
+                        <h3>Kèm cặp chuyên sâu 1:1</h3>
+                        <p>Lộ trình được thiết kế riêng theo nhu cầu và mục tiêu của bạn, giải quyết trực tiếp các vấn đề và thách thức trong công việc để tạo ra hiệu quả vượt trội.</p>
                     </div>
-                </section>
-
-                <h2 class="page-title">Các chương trình đào tạo AI cho Công chức</h2>
-                <section class="programs-grid">
-                    <!-- Program 1: Group Class -->
-                    <div class="program-card">
-                        <div>
-                            <div class="icon"><i class="fas fa-users"></i></div>
-                            <h3>Lớp học chung</h3>
-                            <p>Khóa học chuyên sâu giúp công chức ứng dụng AI để tối ưu hóa công việc, quy trình và báo cáo.</p>
-                            <div class="course-highlights">
-                                <span><i class="fas fa-calendar-alt"></i> Học ngày 08, 09, 10/08/2025</span>
-                                <span><i class="fas fa-clock"></i> 20h - 22h</span>
-                                <span><i class="fas fa-video"></i> Học qua Zoom</span>
-                            </div>
-                        </div>
-                        <a href="?action=contact&type=sms" class="action-button"><i class="fas fa-comment-dots"></i> Nhắn tin đăng ký</a>
+                    <div>
+                        <a href="sms:0832343416" class="action-button premium-btn"><i class="fas fa-comment-dots"></i> Nhắn tin thảo luận</a>
+                        <a href="mailto:dangminhbui.111@gmail.com" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
                     </div>
-
-                    <!-- Program 2: Corporate Training -->
-                    <div class="program-card">
-                        <div>
-                            <div class="icon"><i class="fas fa-building"></i></div>
-                            <h3>Đào tạo cho Đơn vị</h3>
-                            <p>Các đơn vị, tổ chức muốn triển khai đào tạo riêng cho đội ngũ nhân sự vui lòng liên hệ để được tư vấn chương trình phù hợp.</p>
-                        </div>
-                        <a href="?action=contact&type=email" class="action-button purple"><i class="fas fa-envelope"></i> Gửi yêu cầu qua Email</a>
-                    </div>
-                </section>
-            </main>
-
-            <footer class="footer">
-                <p>Liên hệ: <strong>0832343416</strong> | <strong>dangminhbui.111@gmail.com</strong></p>
-                <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
-            </footer>
-        </div>
-
-        <!-- Instruction View -->
-        <div id="instruction-view" class="view">
-             <div class="instruction-page">
-                <h2 id="instruction-title">Để liên hệ, hãy làm theo 2 bước:</h2>
-                <div class="instruction-box">
-                    <p><strong>Bước 1:</strong> Mở link này bằng trình duyệt ngoài (Safari, Chrome).</p>
-                    <div class="image-guide">
-                        <img src="https://i.postimg.cc/fL7M2SRd/1.jpg" alt="Hướng dẫn mở bằng trình duyệt - bước 1" class="instruction-image" onerror="this.onerror=null; this.src='https://placehold.co/280x500/f1f5f9/1F2937?text=Ảnh+hướng+dẫn+1';">
-                        <img src="https://i.postimg.cc/RFxMLL49/2.jpg" alt="Hướng dẫn mở bằng trình duyệt - bước 2" class="instruction-image" onerror="this.onerror=null; this.src='https://placehold.co/280x150/f1f5f9/1F2937?text=Ảnh+hướng+dẫn+2';">
-                    </div>
-                    <p style="font-size: 14px; color: var(--pademy-text-light);">Nhấn vào biểu tượng chia sẻ hoặc dấu "..." ở góc màn hình và chọn "Mở bằng trình duyệt".</p>
                 </div>
-                <div class="instruction-box">
-                    <p><strong>Bước 2:</strong> Sau khi đã mở bằng trình duyệt, nhấn nút bên dưới để liên hệ.</p>
-                    <a id="final-action-button" href="#" class="action-button" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-paper-plane"></i> Liên hệ ngay
-                    </a>
-                </div>
-                <a href="/" class="back-link">« Quay lại trang chính</a>
-            </div>
-        </div>
 
+                <!-- Program 2: Group Class -->
+                <div class="program-card">
+                    <div>
+                        <div class="icon"><i class="fas fa-users"></i></div>
+                        <h3>Lớp học chung</h3>
+                        <p>Khóa học chuyên sâu giúp công chức ứng dụng AI để tối ưu hóa công việc, quy trình và báo cáo.</p>
+                        <p class="note">Lớp ngày 8/8 đã đủ học viên. Lịch khai giảng mới nhất:</p>
+                        <div class="course-highlights">
+                            <span><i class="fas fa-calendar-alt"></i> 22, 23, 24/08/2025</span>
+                            <span><i class="fas fa-clock"></i> 20h - 22h</span>
+                            <span><i class="fas fa-video"></i> Học qua Zoom</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="sms:0832343416" class="action-button"><i class="fas fa-comment-dots"></i> Nhắn tin đăng ký</a>
+                        <a href="mailto:dangminhbui.111@gmail.com" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
+                    </div>
+                </div>
+
+                <!-- Program 3: Corporate Training -->
+                <div class="program-card">
+                    <div>
+                        <div class="icon"><i class="fas fa-building"></i></div>
+                        <h3>Đào tạo cho Đơn vị</h3>
+                        <p>Các đơn vị, tổ chức muốn triển khai đào tạo riêng cho đội ngũ nhân sự vui lòng liên hệ để được tư vấn chương trình phù hợp.</p>
+                    </div>
+                    <div>
+                        <a href="tel:0904652383" class="action-button corporate-btn"><i class="fas fa-phone-alt"></i> Gọi điện trao đổi</a>
+                        <a href="mailto:dangminhbui.111@gmail.com" class="email-button"><i class="fas fa-envelope"></i> Gửi Email</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <div class="about-grid">
+                    <div class="consultation-topics">
+                        <h3>Minh có thể tư vấn gì cho bạn?</h3>
+                        <ul>
+                            <li><i class="fas fa-user-tie"></i>Ứng dụng AI dành cho Công chức, Viên chức.</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i>Ứng dụng AI trong Giáo dục.</li>
+                            <li><i class="fas fa-rocket"></i>Tư vấn khởi nghiệp & đổi mới sáng tạo.</li>
+                        </ul>
+                    </div>
+                    <div class="philosophy-box" style="margin-top:0;">
+                        <h3>Triết lý đồng hành</h3>
+                        <div class="philosophy-item">
+                            <div class="philosophy-icon"><i class="fas fa-brain"></i></div>
+                            <div class="philosophy-text">
+                                <strong>Tập trung vào tư duy</strong>
+                                <span>Không chỉ là công cụ, mà là cách tổ chức công việc, quy trình và dữ liệu một cách khoa học.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Liên hệ: <strong>0832343416</strong> (Lớp học & 1:1) - <strong>0904652383</strong> (Đào tạo Đơn vị)</p>
+            <p>Email: <strong>dangminhbui.111@gmail.com</strong></p>
+            <p>© 2025 Pademy – Kết nối tri thức, lan toả giá trị.</p>
+        </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const actions = {
-                'sms': {
-                    title: 'Để nhắn tin, hãy làm theo 2 bước:',
-                    link: 'sms:0832343416',
-                    buttonText: '<i class="fas fa-comment-dots"></i> Mở ứng dụng Nhắn tin'
-                },
-                'email': {
-                    title: 'Để gửi Email, hãy làm theo 2 bước:',
-                    link: 'mailto:dangminhbui.111@gmail.com',
-                    buttonText: '<i class="fas fa-envelope"></i> Mở ứng dụng Email'
-                }
-            };
-
-            const params = new URLSearchParams(window.location.search);
-            const actionKey = params.get('action');
-            const typeKey = params.get('type');
-
-            const mainView = document.getElementById('main-view');
-            const instructionView = document.getElementById('instruction-view');
-
-            if (actionKey === 'contact' && actions[typeKey]) {
-                const action = actions[typeKey];
-                document.getElementById('instruction-title').textContent = action.title;
-                const finalButton = document.getElementById('final-action-button');
-                finalButton.href = action.link;
-                finalButton.innerHTML = action.buttonText;
-
-                mainView.style.display = 'none';
-                instructionView.style.display = 'block';
-            } else {
-                mainView.style.display = 'block';
-                instructionView.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
